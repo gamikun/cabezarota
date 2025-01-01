@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CabezaRota</title>
+  <style>
+    .piece {
+      position: absolute;
+      background: url(image.jpg);
+      background-size: 256px 256px;
+      box-sizing: border-box;
+      width: 64px;
+      height: 64px;
+      border-radius: 8px;
+      border: solid 1px white;
+    }
+    .container {
+      width: 256px;
+      height: 256px;
+    }
+  </style>
+</head>
+<body>
+<div class="container"></div>
+<script>
+  const container = document.getElementById('container');
+  const pieces = [];
+  const matrix = [];
+
+  for (var index = 0; index < 16; index++) {
+    const piece = document.createElement('div');
+    piece.className = 'piece';
+    const [x, y] = [index % 4, Math.floor(index / 4)];
+    // piece.style.margin = `${y * 64}px ${x * 64}px`;
+    piece.style.backgroundPosition = `-${x * 64}px -${y * 64}px`;
+    piece.pieceIndex = index;
+    pieces.append(piece);
+  }
+
+  while (pieces.length) {
+    gotPiece = pieces.splice(
+      Math.random() * (pieces.length - 2),
+      1,
+    );
+    if (gotPiece) {
+      gotPiece.style.margin = `${y * 64}px ${x * 64}px`;
+      matrix.append(gotPiece);
+    }
+  }
+  
+  
+  
+</script>
+</body>
+</html>
